@@ -1,4 +1,4 @@
-module github.com/codefunded/terraform-provider-tfcoolify
+module terraform-provider-tfcoolify
 
 go 1.21
 
