@@ -1,0 +1,26 @@
+project_name: terraform-provider-tfcoolify
+builds:
+  - main: ./main.go
+    binary: terraform-provider-tfcoolify
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: zip
+    name_template: "{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - LICENSE
+      - README.md
+
+checksum:
+  name_template: "checksums.txt"
+
+release:
+  github:
+    owner: codefunded
+    name: terraform-provider-tfcoolify
