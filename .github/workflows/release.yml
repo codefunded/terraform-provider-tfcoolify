@@ -27,10 +27,15 @@ jobs:
         id: import_gpg
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Install dependencies
         run: go mod tidy
+
+      - name: Setup GPG tty
+        run: |
+          echo "no-tty" >> ~/.gnupg/gpg.conf
+          echo 'pinentry-mode loopback' >> ~/.gnupg/gpg.conf
 
       - name: Install Goreleaser
         uses: goreleaser/goreleaser-action@v6
