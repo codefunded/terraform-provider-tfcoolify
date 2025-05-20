@@ -107,7 +107,7 @@ func resourceDockerComposeAppCreate(d *schema.ResourceData, m interface{}) error
 func resourceDockerComposeAppRead(d *schema.ResourceData, m interface{}) error {
 	client := m.(*Client)
 
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/api/v1/applications/%s", client.apiURL, d.Id()), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/api/v1/services/%s", client.apiURL, d.Id()), nil)
 	if err != nil {
 		return fmt.Errorf("error creating request: %v", err)
 	}
@@ -153,4 +153,4 @@ func resourceDockerComposeAppDelete(d *schema.ResourceData, m interface{}) error
 	}
 
 	return nil
-} 
+}
